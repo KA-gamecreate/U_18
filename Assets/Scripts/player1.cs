@@ -8,8 +8,12 @@ public class player1 : MonoBehaviour
     int _height;
     int _outOfRange = -1;
     int[] _values = null;
+    
+    int moveX;
+    int moveY;
     public GameObject floorBlock;
     public GameObject wallBlock;
+    public GameObject player;
     public int Width
     {
         get { return _width; }
@@ -18,15 +22,15 @@ public class player1 : MonoBehaviour
     {
         get { return _height; }
     }
-    public void Create(int width,int height)
+    public void Create(int width, int height)
     {
         _width = width;
         _height = height;
         _values = new int[Width * Height];
     }
-    public int ToIdx(int x,int y)
+    public int ToIdx(int x, int y)
     {
-        return x +(y * Width);
+        return x + (y * Width);
     }
     public bool IsOutOfRange(int x, int y)
     {
@@ -64,22 +68,27 @@ public class player1 : MonoBehaviour
             Debug.Log(s);
         }
     }
-    public int[,] stageArray = new int[6, 4]{
-        {0,0,0,1},
-        {0,0,0,0},
-        {0,0,0,0},
-        {0,0,0,0},
-        {0,0,0,0},
-        {1,0,0,0},
+    public int[,] stageArray = new int[8, 6]{
+        {1,1,1,1,1,1},
+        {1,0,0,0,0,1},
+        {1,0,0,0,0,1},
+        {1,0,0,0,0,1},
+        {1,0,0,0,0,1},
+        {1,0,0,0,0,1},
+        {1,0,0,0,0,1},
+        {1,1,1,1,1,1},
     };
-    public int[,] PlayerArray = new int[6, 4]{
-        {0,0,0,2},
-        {0,0,0,0},
-        {0,0,0,0},
-        {0,0,0,0},
-        {0,0,0,0},
-        {2,0,0,0},
+    public int[,] playerArray = new int[8, 6]{
+        {0,0,0,0,0,0},
+        {0,0,0,0,2,0},
+        {0,0,0,0,0,0},
+        {0,0,0,0,0,0},
+        {0,0,0,0,0,0},
+        {0,0,0,0,0,0},
+        {0,2,0,0,0,0},
+        {0,0,0,0,0,0},
     };
+
     private void Start()
     {
         for (int i = 0; i < stageArray.GetLength(0); i++)
@@ -88,14 +97,86 @@ public class player1 : MonoBehaviour
             {
                 if (stageArray[i, j] == 0)
                 {
-                    Instantiate(floorBlock, new Vector3(i, -1, j), Quaternion.identity);
+                    Instantiate(floorBlock, new Vector3(i, j, -1), Quaternion.identity);
                 }
                 else
                 {
-                    Instantiate(wallBlock, new Vector3(i, 0, j), Quaternion.identity);
+                    Instantiate(wallBlock, new Vector3(i, j, -1), Quaternion.identity);
 
                 }
+
             }
         }
     }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            moveX = -1;
+            moveY = 0;
+            UpdatePlayerPosition(moveX, moveY);
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            moveX = 1;
+            moveY = 0;
+            UpdatePlayerPosition(moveX, moveY);
+        }
+        else if (Input.GetKeyDown(KeyCode.W))
+        {
+            moveX = 0;
+            moveY = 1;
+            UpdatePlayerPosition(moveX, moveY);
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            moveX = 0;
+            moveY = -1;
+            UpdatePlayerPosition(moveX, moveY);
+        }
+        else
+        {
+            moveX = 0;
+            moveY = 0;
+            UpdatePlayerPosition(moveX, moveY);
+        }
+    }
+    void UpdatePlayerPosition(int playerPositionX = 0 , int playerPositionY = 0)
+    {
+
+        for (int i = 0; i < playerArray.GetLength(0); i++)
+        {
+            for (int j = 0; j < playerArray.GetLength(1); j++)
+            {
+                if (playerArray[i, j] == 2)
+                {
+                    playerPositionX = i;
+                    playerPositionY = j;
+                }
+
+            }
+        }
+        Debug.Log("A");
+        if (stageArray[playerPositionX + moveX, playerPositionY + moveY] == 1)
+        {
+            Debug.Log("壁");
+            return;
+        }
+        else
+        {
+            playerArray[playerPositionX, playerPositionY] = 0;
+            playerArray[playerPositionX + moveX, playerPositionY + moveY] = 2;
+
+            Hashtable moveHash = new Hashtable();
+            Debug.Log(playerPositionX);
+            moveHash.Add("position", new Vector3(playerPositionX, playerPositionY, transform.position.z));
+            moveHash.Add("time", 0.4f);
+            moveHash.Add("delay", 0.0f);
+            iTween.MoveTo(player, moveHash);
+
+        }
+    }
 }
+    
+
+

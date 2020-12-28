@@ -63,7 +63,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\battle.cs" />
     <Compile Include="Assets\Scripts\player1.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>/Users/kasumipokemon/Desktop/U_18/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

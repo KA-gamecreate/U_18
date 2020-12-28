@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class player1 : MonoBehaviour
 {
+    public bool playerTurn;
+    //public bool enemyTurn;
     int _width;
     int _height;
     int _outOfRange = -1;
@@ -14,6 +16,10 @@ public class player1 : MonoBehaviour
     public GameObject floorBlock;
     public GameObject wallBlock;
     public GameObject player;
+    public GameObject enemy;
+    public GameObject mygoal;
+    public GameObject enemygoal;
+    public GameObject goalcanvas;
     public int Width
     {
         get { return _width; }
@@ -68,25 +74,21 @@ public class player1 : MonoBehaviour
             Debug.Log(s);
         }
     }
-    public int[,] stageArray = new int[8, 6]{
-        {1,1,1,1,1,1},
-        {1,0,0,0,0,1},
-        {1,0,0,0,0,1},
-        {1,0,0,0,0,1},
-        {1,0,0,0,0,1},
-        {1,0,0,0,0,1},
-        {1,0,0,0,0,1},
-        {1,1,1,1,1,1},
+    public int[,] stageArray = new int[6, 8]{
+        {1,1,1,1,1,1,1,1},
+        {1,0,0,0,0,0,3,1},
+        {1,0,0,0,0,0,0,1},
+        {1,0,0,0,0,0,0,1},
+        {1,2,0,0,0,0,0,1},
+        {1,1,1,1,1,1,1,1},
     };
-    public int[,] playerArray = new int[8, 6]{
-        {0,0,0,0,0,0},
-        {0,0,0,0,2,0},
-        {0,0,0,0,0,0},
-        {0,0,0,0,0,0},
-        {0,0,0,0,0,0},
-        {0,0,0,0,0,0},
-        {0,2,0,0,0,0},
-        {0,0,0,0,0,0},
+    public int[,] goalArray = new int[6, 8]{
+        {0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,2,0},
+        {0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0},
+        {0,1,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0},
     };
 
     private void Start()
@@ -95,60 +97,143 @@ public class player1 : MonoBehaviour
         {
             for (int j = 0; j < stageArray.GetLength(1); j++)
             {
-                if (stageArray[i, j] == 0)
+                if (stageArray[i, j] == 1)
                 {
-                    Instantiate(floorBlock, new Vector3(i, j, -1), Quaternion.identity);
+                    Instantiate(wallBlock, new Vector3(i, j, -1), Quaternion.identity);
                 }
                 else
                 {
-                    Instantiate(wallBlock, new Vector3(i, j, -1), Quaternion.identity);
+                    Instantiate(floorBlock, new Vector3(i, j, -1), Quaternion.identity);
 
                 }
 
             }
         }
+        for (int i = 0; i < goalArray.GetLength(0); i++)
+        {
+            for (int j = 0; j < goalArray.GetLength(1); j++)
+            {
+                if (goalArray[i, j] == 1)
+                {
+                    Instantiate(mygoal, new Vector3(i, j, 0), Quaternion.identity);
+                }
+                else if(goalArray[i,j] == 2)
+                {
+                    Instantiate(enemygoal, new Vector3(i, j, 0), Quaternion.identity);
+
+                }
+
+            }
+        }
+
+        playerTurn = true;
+
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+
+        if (enemy.activeSelf == false)
         {
-            moveX = -1;
-            moveY = 0;
-            UpdatePlayerPosition(moveX, moveY);
+            playerTurn = true;
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        if (player.activeSelf == false)
         {
-            moveX = 1;
-            moveY = 0;
-            UpdatePlayerPosition(moveX, moveY);
+            playerTurn = false;
+
         }
-        else if (Input.GetKeyDown(KeyCode.W))
-        {
-            moveX = 0;
-            moveY = 1;
+
+        if (Input.GetKeyDown(KeyCode.D) && playerTurn)
+            {
+                moveX = -1;
+                moveY = 0;
+            playerTurn = false;
             UpdatePlayerPosition(moveX, moveY);
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            moveX = 0;
-            moveY = -1;
+               
+            }
+            else if (Input.GetKeyDown(KeyCode.A) && playerTurn)
+            {
+                moveX = 1;
+                moveY = 0;
+            playerTurn = false;
             UpdatePlayerPosition(moveX, moveY);
-        }
-        else
-        {
-            moveX = 0;
-            moveY = 0;
+                
+            }
+            else if (Input.GetKeyDown(KeyCode.W) && playerTurn)
+            {
+                moveX = 0;
+                moveY = 1;
+            playerTurn = false;
             UpdatePlayerPosition(moveX, moveY);
+              
+            }
+            else if (Input.GetKeyDown(KeyCode.S) && playerTurn)
+            {
+                moveX = 0;
+                moveY = -1;
+                playerTurn = false;
+                UpdatePlayerPosition(moveX, moveY);
+                
+            }
+            else
+            {
+                moveX = 0;
+                moveY = 0;
+                UpdatePlayerPosition(moveX, moveY);
+
         }
+        
+    
+            if (Input.GetKeyDown(KeyCode.RightArrow)&&!playerTurn)
+            {
+                moveX = -1;
+                moveY = 0;
+                playerTurn = true;
+                UpdateEnemyPosition(moveX, moveY);
+          
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow) && !playerTurn)
+            {
+                moveX = 1;
+                moveY = 0;
+                playerTurn = true;
+                UpdateEnemyPosition(moveX, moveY);
+                
+            }
+            else if (Input.GetKeyDown(KeyCode.UpArrow) && !playerTurn)
+            {
+                moveX = 0;
+                moveY = 1;
+            playerTurn = true;
+            UpdateEnemyPosition(moveX, moveY);
+               
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow) && !playerTurn)
+            {
+                moveX = 0;
+                moveY = -1;
+            playerTurn = true;
+            UpdateEnemyPosition(moveX, moveY);
+               
+            }
+            else
+            {
+                moveX = 0;
+                moveY = 0;
+                UpdateEnemyPosition(moveX, moveY);
+               
+        }
+        Debug.Log(playerTurn);
+        
+
     }
     void UpdatePlayerPosition(int playerPositionX = 0 , int playerPositionY = 0)
     {
 
-        for (int i = 0; i < playerArray.GetLength(0); i++)
+        for (int i = 0; i < stageArray.GetLength(0); i++)
         {
-            for (int j = 0; j < playerArray.GetLength(1); j++)
+            for (int j = 0; j < stageArray.GetLength(1); j++)
             {
-                if (playerArray[i, j] == 2)
+                if (stageArray[i, j] == 2)
                 {
                     playerPositionX = i;
                     playerPositionY = j;
@@ -160,12 +245,27 @@ public class player1 : MonoBehaviour
         if (stageArray[playerPositionX + moveX, playerPositionY + moveY] == 1)
         {
             Debug.Log("壁");
+            playerTurn = true;
             return;
         }
+        
+        
         else
         {
-            playerArray[playerPositionX, playerPositionY] = 0;
-            playerArray[playerPositionX + moveX, playerPositionY + moveY] = 2;
+            if (stageArray[playerPositionX + moveX, playerPositionY + moveY] == 3)
+            {
+                enemy.SetActive(false);
+                playerTurn = true;
+                Debug.Log("testdayon");
+
+            }
+            if (goalArray[playerPositionX + moveX, playerPositionY + moveY] == 2)
+            {
+                goalcanvas.SetActive(true);
+                Debug.Log("testdayo");
+            }
+            stageArray[playerPositionX, playerPositionY] = 0;
+            stageArray[playerPositionX + moveX, playerPositionY + moveY] = 2;
 
             Hashtable moveHash = new Hashtable();
             Debug.Log(playerPositionX);
@@ -175,6 +275,60 @@ public class player1 : MonoBehaviour
             iTween.MoveTo(player, moveHash);
 
         }
+        
+    }
+    void UpdateEnemyPosition(int enemyPositionX = 0, int enemyPositionY = 0)
+    {
+
+        for (int i = 0; i < stageArray.GetLength(0); i++)
+        {
+            for (int j = 0; j < stageArray.GetLength(1); j++)
+            {
+                if (stageArray[i, j] == 3)
+                {
+                   enemyPositionX = i;
+                   enemyPositionY = j;
+                }
+
+            }
+        }
+        
+        Debug.Log(enemyPositionX + "enemyPositionX");
+        Debug.Log(enemyPositionY + "enemyPositionY");
+        if (stageArray[enemyPositionX + moveX, enemyPositionY + moveY] == 1)
+        {
+
+
+            Debug.Log("壁");
+            playerTurn = false;
+            return;
+        }
+        
+        else
+        {
+           if (stageArray[enemyPositionX + moveX, enemyPositionY + moveY] == 2)
+            {
+                player.SetActive(false);
+                playerTurn = false;
+                Debug.Log("testt");
+            }
+            if (goalArray[enemyPositionX + moveX, enemyPositionY + moveY] == 1)
+            {
+                goalcanvas.SetActive(true);
+                Debug.Log("test");
+            }
+            stageArray[enemyPositionX, enemyPositionY] = 0;
+            stageArray[enemyPositionX + moveX, enemyPositionY + moveY] = 3;
+
+            Hashtable moveHash = new Hashtable();
+            Debug.Log(enemyPositionX + "aaa");
+            moveHash.Add("position", new Vector3(enemyPositionX, enemyPositionY, transform.position.z));
+            moveHash.Add("time", 0.4f);
+            moveHash.Add("delay", 0.0f);
+            iTween.MoveTo(enemy, moveHash);
+
+        }
+        
     }
 }
     

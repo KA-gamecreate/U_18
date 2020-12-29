@@ -63,7 +63,7 @@ public class player1 : MonoBehaviour
     }
     public void Dump()
     {
-        Debug.Log("[Array2D] (w,h)=(" + Width + "," + Height + ")");
+       
         for (int y = 0; y < Height; y++)
         {
             string s = "";
@@ -71,7 +71,7 @@ public class player1 : MonoBehaviour
             {
                 s += Get(x, y) + ",";
             }
-            Debug.Log(s);
+            
         }
     }
     public int[,] stageArray = new int[6, 8]{
@@ -243,10 +243,10 @@ public class player1 : MonoBehaviour
 
             }
         }
-        Debug.Log("A");
+        
         if (stageArray[playerPositionX + moveX, playerPositionY + moveY] == 1)
         {
-            Debug.Log("壁");
+           
             playerTurn = true;
             return;
         }
@@ -258,19 +258,19 @@ public class player1 : MonoBehaviour
             {
                 enemy.SetActive(false);
                 playerTurn = true;
-                Debug.Log("testdayon");
+              
 
             }
             if (goalArray[playerPositionX + moveX, playerPositionY + moveY] == 2)
             {
                 goalcanvas.SetActive(true);
-                Debug.Log("testdayo");
+               
             }
             stageArray[playerPositionX, playerPositionY] = 0;
             stageArray[playerPositionX + moveX, playerPositionY + moveY] = 2;
 
             Hashtable moveHash = new Hashtable();
-            Debug.Log(playerPositionX);
+           
             moveHash.Add("position", new Vector3(playerPositionX, playerPositionY, transform.position.z));
             moveHash.Add("time", 0.4f);
             moveHash.Add("delay", 0.0f);
@@ -295,13 +295,11 @@ public class player1 : MonoBehaviour
             }
         }
         
-        Debug.Log(enemyPositionX + "enemyPositionX");
-        Debug.Log(enemyPositionY + "enemyPositionY");
+       
         if (stageArray[enemyPositionX + moveX, enemyPositionY + moveY] == 1)
         {
 
 
-            Debug.Log("壁");
             playerTurn = false;
             return;
         }
@@ -312,18 +310,18 @@ public class player1 : MonoBehaviour
             {
                 player.SetActive(false);
                 playerTurn = false;
-                Debug.Log("testt");
+              
             }
             if (goalArray[enemyPositionX + moveX, enemyPositionY + moveY] == 1)
             {
                 goalcanvas.SetActive(true);
-                Debug.Log("test");
+              
             }
             stageArray[enemyPositionX, enemyPositionY] = 0;
             stageArray[enemyPositionX + moveX, enemyPositionY + moveY] = 3;
 
             Hashtable moveHash = new Hashtable();
-            Debug.Log(enemyPositionX + "aaa");
+          
             moveHash.Add("position", new Vector3(enemyPositionX, enemyPositionY, transform.position.z));
             moveHash.Add("time", 0.4f);
             moveHash.Add("delay", 0.0f);

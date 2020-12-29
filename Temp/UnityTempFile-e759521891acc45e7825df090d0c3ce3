@@ -298,4 +298,5 @@
 /define:ENABLE_VSTU
 /define:CSHARP_7_OR_LATER
 /define:CSHARP_7_3_OR_NEWER
+"Assets/retry.cs"
 "Assets/Scripts/player1.cs"

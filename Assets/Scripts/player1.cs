@@ -10,7 +10,12 @@ public class player1 : MonoBehaviour
     int _height;
     int _outOfRange = -1;
     int[] _values = null;
-    
+    public AudioClip sound1;
+    public AudioClip sound2;
+    public AudioClip sound3;
+    public AudioClip sound4;
+    AudioSource audioSource;
+    bool goal;
     int moveX;
     int moveY;
     public GameObject floorBlock;
@@ -20,6 +25,7 @@ public class player1 : MonoBehaviour
     public GameObject mygoal;
     public GameObject enemygoal;
     public GameObject goalcanvas;
+    public GameObject goalcanvas2;
     public int Width
     {
         get { return _width; }
@@ -93,6 +99,8 @@ public class player1 : MonoBehaviour
 
     private void Start()
     {
+        goal = false;
+        audioSource = GetComponent<AudioSource>();
         playerTurn = true;
 
         for (int i = 0; i < stageArray.GetLength(0); i++)
@@ -144,33 +152,38 @@ public class player1 : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.D) && playerTurn)
+        if (Input.GetKeyDown(KeyCode.D) && playerTurn &&!goal)
             {
-                moveX = -1;
+            audioSource.PlayOneShot(sound1);
+            moveX = -1;
                 moveY = 0;
             playerTurn = false;
             UpdatePlayerPosition(moveX, moveY);
+
                
             }
-            else if (Input.GetKeyDown(KeyCode.A) && playerTurn)
+            else if (Input.GetKeyDown(KeyCode.A) && playerTurn && !goal)
             {
-                moveX = 1;
+            audioSource.PlayOneShot(sound1);
+            moveX = 1;
                 moveY = 0;
             playerTurn = false;
             UpdatePlayerPosition(moveX, moveY);
                 
             }
-            else if (Input.GetKeyDown(KeyCode.W) && playerTurn)
+            else if (Input.GetKeyDown(KeyCode.W) && playerTurn && !goal)
             {
-                moveX = 0;
+            audioSource.PlayOneShot(sound1);
+            moveX = 0;
                 moveY = 1;
             playerTurn = false;
             UpdatePlayerPosition(moveX, moveY);
               
             }
-            else if (Input.GetKeyDown(KeyCode.S) && playerTurn)
+            else if (Input.GetKeyDown(KeyCode.S) && playerTurn && !goal)
             {
-                moveX = 0;
+            audioSource.PlayOneShot(sound1);
+            moveX = 0;
                 moveY = -1;
                 playerTurn = false;
                 UpdatePlayerPosition(moveX, moveY);
@@ -185,33 +198,37 @@ public class player1 : MonoBehaviour
         }
         
     
-            if (Input.GetKeyDown(KeyCode.RightArrow)&&!playerTurn)
+            if (Input.GetKeyDown(KeyCode.RightArrow)&&!playerTurn && !goal)
             {
-                moveX = -1;
+            audioSource.PlayOneShot(sound2);
+            moveX = -1;
                 moveY = 0;
                 playerTurn = true;
                 UpdateEnemyPosition(moveX, moveY);
           
             }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow) && !playerTurn)
+            else if (Input.GetKeyDown(KeyCode.LeftArrow) && !playerTurn && !goal)
             {
-                moveX = 1;
+            audioSource.PlayOneShot(sound2);
+            moveX = 1;
                 moveY = 0;
                 playerTurn = true;
                 UpdateEnemyPosition(moveX, moveY);
                 
             }
-            else if (Input.GetKeyDown(KeyCode.UpArrow) && !playerTurn)
+            else if (Input.GetKeyDown(KeyCode.UpArrow) && !playerTurn && !goal)
             {
-                moveX = 0;
+            audioSource.PlayOneShot(sound2);
+            moveX = 0;
                 moveY = 1;
             playerTurn = true;
             UpdateEnemyPosition(moveX, moveY);
                
             }
-            else if (Input.GetKeyDown(KeyCode.DownArrow) && !playerTurn)
+            else if (Input.GetKeyDown(KeyCode.DownArrow) && !playerTurn && !goal) 
             {
-                moveX = 0;
+            audioSource.PlayOneShot(sound2);
+            moveX = 0;
                 moveY = -1;
             playerTurn = true;
             UpdateEnemyPosition(moveX, moveY);
@@ -224,6 +241,8 @@ public class player1 : MonoBehaviour
                 UpdateEnemyPosition(moveX, moveY);
                
         }
+            
+        
         Debug.Log(playerTurn);
         
 
@@ -247,7 +266,7 @@ public class player1 : MonoBehaviour
         if (stageArray[playerPositionX + moveX, playerPositionY + moveY] == 1)
         {
            
-            playerTurn = true;
+            //playerTurn = true;
             return;
         }
         
@@ -256,6 +275,7 @@ public class player1 : MonoBehaviour
         {
             if (stageArray[playerPositionX + moveX, playerPositionY + moveY] == 3)
             {
+                audioSource.PlayOneShot(sound4);
                 enemy.SetActive(false);
                 playerTurn = true;
               
@@ -263,8 +283,15 @@ public class player1 : MonoBehaviour
             }
             if (goalArray[playerPositionX + moveX, playerPositionY + moveY] == 2)
             {
+                
                 goalcanvas.SetActive(true);
-               
+                if (!goal)
+                {
+                    audioSource.PlayOneShot(sound3);
+                    goal = true;
+                    Debug.Log("うるさ");
+                }
+
             }
             stageArray[playerPositionX, playerPositionY] = 0;
             stageArray[playerPositionX + moveX, playerPositionY + moveY] = 2;
@@ -300,7 +327,7 @@ public class player1 : MonoBehaviour
         {
 
 
-            playerTurn = false;
+            //playerTurn = false;
             return;
         }
         
@@ -308,14 +335,25 @@ public class player1 : MonoBehaviour
         {
            if (stageArray[enemyPositionX + moveX, enemyPositionY + moveY] == 2)
             {
+                audioSource.PlayOneShot(sound4);
                 player.SetActive(false);
                 playerTurn = false;
               
             }
             if (goalArray[enemyPositionX + moveX, enemyPositionY + moveY] == 1)
             {
-                goalcanvas.SetActive(true);
-              
+                
+                
+                goalcanvas2.SetActive(true);
+
+                if (!goal)
+                {
+                    audioSource.PlayOneShot(sound3);
+                    goal = true;
+                    Debug.Log("うるさ");
+                }
+
+
             }
             stageArray[enemyPositionX, enemyPositionY] = 0;
             stageArray[enemyPositionX + moveX, enemyPositionY + moveY] = 3;
@@ -330,6 +368,7 @@ public class player1 : MonoBehaviour
         }
         
     }
+
 }
     
 

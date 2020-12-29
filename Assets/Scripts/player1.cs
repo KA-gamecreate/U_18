@@ -93,6 +93,8 @@ public class player1 : MonoBehaviour
 
     private void Start()
     {
+        playerTurn = true;
+
         for (int i = 0; i < stageArray.GetLength(0); i++)
         {
             for (int j = 0; j < stageArray.GetLength(1); j++)
@@ -126,7 +128,7 @@ public class player1 : MonoBehaviour
             }
         }
 
-        playerTurn = true;
+        
 
     }
     void Update()

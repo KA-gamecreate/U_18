@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class player1 : MonoBehaviour
 {
+    
     public bool playerTurn;
     //public bool enemyTurn;
     int _width;
@@ -81,6 +82,7 @@ public class player1 : MonoBehaviour
         }
     }
     public int[,] stageArray = new int[6, 8]{
+        //0は床 1は壁 2は自機 3が敵
         {1,1,1,1,1,1,1,1},
         {1,0,0,0,0,0,3,1},
         {1,0,0,0,0,0,0,1},
@@ -89,6 +91,7 @@ public class player1 : MonoBehaviour
         {1,1,1,1,1,1,1,1},
     };
     public int[,] goalArray = new int[6, 8]{
+        //1は自陣 2は敵陣
         {0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,2,0},
         {0,0,0,0,0,0,0,0},
@@ -151,44 +154,45 @@ public class player1 : MonoBehaviour
             playerTurn = false;
 
         }
-
-        if (Input.GetKeyDown(KeyCode.D) && playerTurn &&!goal)
+        if (player.activeSelf == true)
+        {
+           if (Input.GetKeyDown(KeyCode.D) && playerTurn && !goal)
             {
-            audioSource.PlayOneShot(sound1);
-            moveX = -1;
+                audioSource.PlayOneShot(sound1);
+                moveX = -1;
                 moveY = 0;
-            playerTurn = false;
-            UpdatePlayerPosition(moveX, moveY);
+                playerTurn = false;
+                UpdatePlayerPosition(moveX, moveY);
 
 
-               
+
             }
             else if (Input.GetKeyDown(KeyCode.A) && playerTurn && !goal)
             {
-            audioSource.PlayOneShot(sound1);
-            moveX = 1;
+                audioSource.PlayOneShot(sound1);
+                moveX = 1;
                 moveY = 0;
-            playerTurn = false;
-            UpdatePlayerPosition(moveX, moveY);
-                
+                playerTurn = false;
+                UpdatePlayerPosition(moveX, moveY);
+
             }
             else if (Input.GetKeyDown(KeyCode.W) && playerTurn && !goal)
             {
-            audioSource.PlayOneShot(sound1);
-            moveX = 0;
+                audioSource.PlayOneShot(sound1);
+                moveX = 0;
                 moveY = 1;
-            playerTurn = false;
-            UpdatePlayerPosition(moveX, moveY);
-              
+                playerTurn = false;
+                UpdatePlayerPosition(moveX, moveY);
+
             }
             else if (Input.GetKeyDown(KeyCode.S) && playerTurn && !goal)
             {
-            audioSource.PlayOneShot(sound1);
-            moveX = 0;
+                audioSource.PlayOneShot(sound1);
+                moveX = 0;
                 moveY = -1;
                 playerTurn = false;
                 UpdatePlayerPosition(moveX, moveY);
-                
+
             }
             else
             {
@@ -196,51 +200,54 @@ public class player1 : MonoBehaviour
                 moveY = 0;
                 UpdatePlayerPosition(moveX, moveY);
 
+            }
         }
-        
-    
-            if (Input.GetKeyDown(KeyCode.RightArrow)&&!playerTurn && !goal)
+
+        if (enemy.activeSelf == true)
+        {
+            if (Input.GetKeyDown(KeyCode.RightArrow) && !playerTurn && !goal)
             {
-            audioSource.PlayOneShot(sound2);
-            moveX = -1;
+                audioSource.PlayOneShot(sound2);
+                moveX = -1;
                 moveY = 0;
                 playerTurn = true;
                 UpdateEnemyPosition(moveX, moveY);
-          
+
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow) && !playerTurn && !goal)
             {
-            audioSource.PlayOneShot(sound2);
-            moveX = 1;
+                audioSource.PlayOneShot(sound2);
+                moveX = 1;
                 moveY = 0;
                 playerTurn = true;
                 UpdateEnemyPosition(moveX, moveY);
-                
+
             }
             else if (Input.GetKeyDown(KeyCode.UpArrow) && !playerTurn && !goal)
             {
-            audioSource.PlayOneShot(sound2);
-            moveX = 0;
+                audioSource.PlayOneShot(sound2);
+                moveX = 0;
                 moveY = 1;
-            playerTurn = true;
-            UpdateEnemyPosition(moveX, moveY);
-               
+                playerTurn = true;
+                UpdateEnemyPosition(moveX, moveY);
+
             }
-            else if (Input.GetKeyDown(KeyCode.DownArrow) && !playerTurn && !goal) 
+            else if (Input.GetKeyDown(KeyCode.DownArrow) && !playerTurn && !goal)
             {
-            audioSource.PlayOneShot(sound2);
-            moveX = 0;
+                audioSource.PlayOneShot(sound2);
+                moveX = 0;
                 moveY = -1;
-            playerTurn = true;
-            UpdateEnemyPosition(moveX, moveY);
-               
+                playerTurn = true;
+                UpdateEnemyPosition(moveX, moveY);
+
             }
             else
             {
                 moveX = 0;
                 moveY = 0;
                 UpdateEnemyPosition(moveX, moveY);
-               
+
+            }
         }
             
         
@@ -263,15 +270,20 @@ public class player1 : MonoBehaviour
 
             }
         }
-        
-        if (stageArray[playerPositionX + moveX, playerPositionY + moveY] == 1)
+        if (player.activeSelf == false)
         {
-           
-            //playerTurn = true;
-            return;
+            playerPositionX = 100;
+            playerPositionY = 100;
         }
+            if (stageArray[playerPositionX + moveX, playerPositionY + moveY] == 1)
+            {
+
+                playerTurn = true;
+                return;
+            }
         
-        
+
+
         else
         {
             if (stageArray[playerPositionX + moveX, playerPositionY + moveY] == 3)
@@ -279,12 +291,12 @@ public class player1 : MonoBehaviour
                 audioSource.PlayOneShot(sound4);
                 enemy.SetActive(false);
                 playerTurn = true;
-              
+
 
             }
             if (goalArray[playerPositionX + moveX, playerPositionY + moveY] == 2)
             {
-                
+
                 goalcanvas.SetActive(true);
                 if (!goal)
                 {
@@ -298,7 +310,7 @@ public class player1 : MonoBehaviour
             stageArray[playerPositionX + moveX, playerPositionY + moveY] = 2;
 
             Hashtable moveHash = new Hashtable();
-           
+
             moveHash.Add("position", new Vector3(playerPositionX, playerPositionY, transform.position.z));
             moveHash.Add("time", 0.4f);
             moveHash.Add("delay", 0.0f);
@@ -322,13 +334,18 @@ public class player1 : MonoBehaviour
 
             }
         }
+        if(enemy.activeSelf == false)
+        {
+            enemyPositionX = 100;
+            enemyPositionY = 100;
+        }
         
        
         if (stageArray[enemyPositionX + moveX, enemyPositionY + moveY] == 1)
         {
 
 
-            //playerTurn = false;
+            playerTurn = false;
             return;
         }
         

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class player1 : MonoBehaviour
+public class player2 : MonoBehaviour
 {
-    
+
     public bool playerTurn;
     //public bool enemyTurn;
     int _width;
@@ -70,7 +70,7 @@ public class player1 : MonoBehaviour
     }
     public void Dump()
     {
-       
+
         for (int y = 0; y < Height; y++)
         {
             string s = "";
@@ -78,7 +78,7 @@ public class player1 : MonoBehaviour
             {
                 s += Get(x, y) + ",";
             }
-            
+
         }
     }
     public int[,] stageArray = new int[6, 8]{
@@ -130,7 +130,7 @@ public class player1 : MonoBehaviour
                 {
                     Instantiate(mygoal, new Vector3(i, j, 0), Quaternion.identity);
                 }
-                else if(goalArray[i,j] == 2)
+                else if (goalArray[i, j] == 2)
                 {
                     Instantiate(enemygoal, new Vector3(i, j, 0), Quaternion.identity);
 
@@ -139,7 +139,7 @@ public class player1 : MonoBehaviour
             }
         }
 
-        
+
 
     }
     void Update()
@@ -156,7 +156,7 @@ public class player1 : MonoBehaviour
         }
         if (player.activeSelf == true)
         {
-           if (Input.GetKeyDown(KeyCode.D) && playerTurn && !goal)
+            if (Input.GetKeyDown(KeyCode.D) && playerTurn && !goal)
             {
                 audioSource.PlayOneShot(sound1);
                 moveX = -1;
@@ -201,17 +201,22 @@ public class player1 : MonoBehaviour
                 UpdatePlayerPosition(moveX, moveY);
 
             }
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                playerTurn = false;
+            }
         }
+       
 
-  }
-        
-            
-        
-        
-        
+    }
 
-    
-    void UpdatePlayerPosition(int playerPositionX = 0 , int playerPositionY = 0)
+
+
+
+
+
+
+    void UpdatePlayerPosition(int playerPositionX = 0, int playerPositionY = 0)
     {
 
         for (int i = 0; i < stageArray.GetLength(0); i++)
@@ -231,13 +236,13 @@ public class player1 : MonoBehaviour
             playerPositionX = 100;
             playerPositionY = 100;
         }
-            if (stageArray[playerPositionX + moveX, playerPositionY + moveY] == 1)
-            {
+        if (stageArray[playerPositionX + moveX, playerPositionY + moveY] == 1)
+        {
 
-                playerTurn = true;
-                return;
-            }
-        
+            playerTurn = true;
+            return;
+        }
+
 
 
         else
@@ -273,10 +278,10 @@ public class player1 : MonoBehaviour
             iTween.MoveTo(player, moveHash);
 
         }
-        
+
     }
-    
-    }
+
+}
 
 
 

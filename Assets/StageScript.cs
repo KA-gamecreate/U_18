@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stage : MonoBehaviour
+public class StageScript : MonoBehaviour
 {
 
     public bool playerTurn;
@@ -315,12 +315,10 @@ public class Stage : MonoBehaviour
         }
 
     }
-    int[] GetPosition(int number = 0)
+    int[] GetPosition(int number)
     {
         int playerPositionX = 0;
         int playerPositionY = 0;
-        int enemyPositionX = 0;
-        int enemyPositionY = 0;
         for (int i = 0; i < stageArray.GetLength(0); i++)
         {
             for (int j = 0; j < stageArray.GetLength(1); j++)

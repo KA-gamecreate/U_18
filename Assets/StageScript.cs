@@ -16,7 +16,7 @@ public class StageScript : MonoBehaviour
     public AudioClip sound3;
     public AudioClip sound4;
     AudioSource audioSource;
-    bool goal;
+    public bool goal;
     int moveX;
     int moveY;
     public GameObject floorBlock;

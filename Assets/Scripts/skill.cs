@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class skill : MonoBehaviour
 {
     public GameObject pl1;
-    public GameObject en1;
+    public GameObject skill2;
     public GameObject pl2;
     public GameObject en2;
-    public GameObject yasumi;
+    public GameObject button1;
+    public GameObject button2;
     StageScript script;
     GameObject stagemaker;
     AudioSource audioSource;
@@ -20,8 +21,8 @@ public class skill : MonoBehaviour
     void Start()
     {
         stagemaker = GameObject.Find("stagemaker");
-        script = stagemaker.GetComponent<StageScript>();
-        bool plturn = stagemaker.GetComponent<StageScript>().playerTurn;
+
+        
     }
 
     // Update is called once per frame
@@ -33,9 +34,12 @@ public class skill : MonoBehaviour
     {
         pl1.SetActive(true);
     }
-    public void NoenSkill()
+    public void Twomove()
     {
-        en1.SetActive(true);
+        skill2.SetActive(true);
+        button2.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(sound);
     }
     public void PlSkillA()
     {
@@ -50,8 +54,7 @@ public class skill : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         stagemaker.GetComponent<StageScript>().playerTurn = false;
-        yasumi.SetActive(false);
-        pl2.SetActive(false);
+        button1.SetActive(false);
         audioSource.PlayOneShot(sound);
     }
 

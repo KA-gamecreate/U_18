@@ -24,7 +24,7 @@ public class skill : MonoBehaviour
     void Start()
     {
         stagemaker = GameObject.Find("stagemaker");
-
+        Debug.Log(stagemaker);
         
     }
 
@@ -96,4 +96,5 @@ public class skill : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         audioSource.PlayOneShot(sound);
     }
+ 
 }

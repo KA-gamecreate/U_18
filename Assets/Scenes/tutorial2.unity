@@ -2867,7 +2867,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1110782266}
   selectedCommands:
-  - {fileID: 1110782274}
+  - {fileID: 1110782267}
   variables: []
   description: 
   stepPause: 0
@@ -3738,7 +3738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 147
   indentLevel: 0
-  storyText: "\u6355\u98DF\u3057\u305F\u5F8C\u306F\u76F8\u624B\u306E\u9663\u5730\u306B\u653B\u3081\u5165\u308A\u307E\u3057\u3087\u3046\u3002"
+  storyText: "\u6355\u98DF\u3057\u305F\u5F8C\u306F\u76F8\u624B\u306E\u9663\u5730\u306B\u653B\u3081\u5165\u308A\u307E\u3057\u3087\u3046\u3002W\u30AD\u30FC\u3092\u9023\u6253\u3067\u3059\uFF01"
   description: 
   character: {fileID: 510998766}
   portrait: {fileID: 21300000, guid: 2c8e25011731e46c58809f49c36cf5ec, type: 3}
@@ -5983,6 +5983,7 @@ GameObject:
   - component: {fileID: 2026273871}
   - component: {fileID: 2026273873}
   - component: {fileID: 2026273872}
+  - component: {fileID: 2026273874}
   m_Layer: 5
   m_Name: win1
   m_TagString: Untagged
@@ -6046,3 +6047,15 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2026273870}
   m_CullTransparentMesh: 0
+--- !u!114 &2026273874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026273870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d86170b8cf80f4ef6a064e4979b0d5f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

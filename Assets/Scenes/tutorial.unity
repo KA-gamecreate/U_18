@@ -2743,7 +2743,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 64.993965
-    y: 72.01207
+    y: 73.018105
     width: 104.32596
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -2794,9 +2794,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1110782243}
+  - {fileID: 1110782231}
   selectedCommands:
-  - {fileID: 1110782242}
+  - {fileID: 1110782234}
   variables: []
   description: 
   stepPause: 0
@@ -3046,7 +3046,7 @@ MonoBehaviour:
   waitUntilFinished: 0
 --- !u!114 &1110782242
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}

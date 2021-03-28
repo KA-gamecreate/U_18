@@ -153,7 +153,7 @@ public class player2 : MonoBehaviour
         if (player.activeSelf == false)
         {
 
-            audioSource.PlayOneShot(sound2);
+            
             moveX = 3;
             moveY = -1;
             playerTurn = true;
@@ -232,12 +232,14 @@ public class player2 : MonoBehaviour
     
         void Enemymove()
         {
+        if (player.activeSelf == true)
+        {
             audioSource.PlayOneShot(sound2);
             moveX = 0;
             moveY = -1;
             playerTurn = true;
             UpdateEnemyPosition(moveX, moveY);
-
+        }
         }
 
         void Enemymovethree()

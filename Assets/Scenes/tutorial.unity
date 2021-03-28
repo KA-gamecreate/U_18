@@ -2611,7 +2611,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4536,8 +4536,8 @@ MonoBehaviour:
   playerTurn: 0
   sound1: {fileID: 8300000, guid: d5fa0bf812a5d45fe8a3d58e01128e50, type: 3}
   sound2: {fileID: 8300000, guid: a1af5d21b6eba4b5aa4ee3c71d2a7310, type: 3}
-  sound3: {fileID: 8300000, guid: a6a21cb768cf94fdbab1df3647719232, type: 3}
-  sound4: {fileID: 8300000, guid: 6722330a9cd2048f7bb0fe59b28befdb, type: 3}
+  sound3: {fileID: 8300000, guid: 6722330a9cd2048f7bb0fe59b28befdb, type: 3}
+  sound4: {fileID: 8300000, guid: a6a21cb768cf94fdbab1df3647719232, type: 3}
   goal: 0
   floorBlock: {fileID: 1024629389}
   wallBlock: {fileID: 1965364575}
@@ -4573,7 +4573,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6239,7 +6239,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1988342226
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class skill : MonoBehaviour
     public GameObject button2;
     public GameObject button3;
     public GameObject button4;
+
     StageScript script;
     GameObject stagemaker;
     AudioSource audioSource;
@@ -56,6 +57,7 @@ public class skill : MonoBehaviour
     {
         pl1.SetActive(true);
     }
+    
     public void Twomove()
     {
         skill2.SetActive(true);
@@ -75,7 +77,7 @@ public class skill : MonoBehaviour
     public void Yasumi()
     {
         audioSource = GetComponent<AudioSource>();
-        stagemaker.GetComponent<StageScript>().playerTurn = false;
+        stagemaker.GetComponent<player1>().playerTurn = false;
         button1.SetActive(false);
         audioSource.PlayOneShot(sound);
     }

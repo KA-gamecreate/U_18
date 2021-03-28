@@ -27,6 +27,5 @@ public class skill_tutorial : MonoBehaviour
         button1.SetActive(false);
         audioSource.PlayOneShot(sound);
         stagemaker.GetComponent<player3>().Enemymove();
-        Debug.Log("done");
       }
 }

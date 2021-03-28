@@ -16,7 +16,7 @@ public class retry : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.R))
         {
-            SceneManager.LoadScene("sentou");
+            SceneManager.LoadScene("selectmenu");
         }
     }
 }

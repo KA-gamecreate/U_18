@@ -78,6 +78,8 @@ public class skill : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         stagemaker.GetComponent<player1>().playerTurn = false;
+        stagemaker.GetComponent<player1>().yourturn.SetActive(false);
+        stagemaker.GetComponent<player1>().enemyturn.SetActive(true);
         button1.SetActive(false);
         audioSource.PlayOneShot(sound);
     }

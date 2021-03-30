@@ -17,6 +17,7 @@ public class twomove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S))
         {
             stagemaker.GetComponent<player1>().playerTurn = true;
+            stagemaker.GetComponent<player1>().CancelInvoke();
             Destroy(this);
             Debug.Log("aaa");
         }      

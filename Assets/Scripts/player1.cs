@@ -11,7 +11,7 @@ public class player1 : MonoBehaviour
     int _height;
     int _outOfRange = -1;
     int[] _values = null;
-    int random;
+    int enemynum = 0;
     public AudioClip sound1;
     public AudioClip sound2;
     public AudioClip sound3;
@@ -28,7 +28,10 @@ public class player1 : MonoBehaviour
     public GameObject enemygoal;
     public GameObject goalcanvas;
     public GameObject goalcanvas2;
+    public GameObject yourturn;
+    public GameObject enemyturn;
     public int Width
+
     {
         get { return _width; }
     }
@@ -107,6 +110,8 @@ public class player1 : MonoBehaviour
         goal = false;
         audioSource = GetComponent<AudioSource>();
         playerTurn = true;
+        yourturn.SetActive(true);
+        enemyturn.SetActive(false);
        
         for (int i = 0; i < stageArray.GetLength(0); i++)
         {
@@ -146,18 +151,31 @@ public class player1 : MonoBehaviour
     }
     void Update()
     {
-
+        if(playerTurn == false)
+        {
+            yourturn.SetActive(false);
+            enemyturn.SetActive(true);
+        }
+        if (playerTurn == true)
+        {
+            yourturn.SetActive(true);
+            enemyturn.SetActive(false);
+        }
         if (enemy.activeSelf == false)
         {
             playerTurn = true;
+            yourturn.SetActive(true);
+            enemyturn.SetActive(false);
         }
         if (player.activeSelf == false)
         {
             playerTurn = false;
-
+            enemyturn.SetActive(true);
+            yourturn.SetActive(false);
         }
         if (player.activeSelf == true)
         {
+          
             if (Input.GetKeyDown(KeyCode.D) && playerTurn && !goal)
             {
                 
@@ -208,7 +226,8 @@ public class player1 : MonoBehaviour
         }
         if (enemy.activeSelf == true)
         {
-            Debug.Log("????");
+           
+
             if (!playerTurn && !goal)
             {
                 Invoke("Enemyway", 1.0f);
@@ -233,9 +252,9 @@ public class player1 : MonoBehaviour
     public void Enemyway()
     {
         
-        random = Random.Range(1, 4);
-        Debug.Log(random);
-        if (random == 1 )
+        enemynum = Random.Range(1, 3);
+        Debug.Log(enemynum);
+        if (enemynum == 1 )
         {
       
             audioSource.PlayOneShot(sound1);
@@ -245,19 +264,9 @@ public class player1 : MonoBehaviour
             UpdateEnemyPosition(moveX, moveY);
             CancelInvoke();
         }
-        if (random == 2)
+        if (enemynum == 2)
         {
          
-            audioSource.PlayOneShot(sound1);
-            moveX = 0;
-            moveY = 1;
-            playerTurn = true;
-            UpdateEnemyPosition(moveX, moveY);
-            CancelInvoke();
-        }
-        if (random == 3)
-        {
-          
             audioSource.PlayOneShot(sound1);
             moveX = 1;
             moveY = 0;
@@ -265,18 +274,6 @@ public class player1 : MonoBehaviour
             UpdateEnemyPosition(moveX, moveY);
             CancelInvoke();
         }
-        if (random == 4)
-        {
-        
-            audioSource.PlayOneShot(sound1);
-            moveX = -1;
-            moveY = 0;
-            playerTurn = true;
-            UpdateEnemyPosition(moveX, moveY);
-            CancelInvoke();
-        }
-
-
     }
 
 

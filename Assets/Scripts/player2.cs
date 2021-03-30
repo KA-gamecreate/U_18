@@ -28,6 +28,8 @@ public class player2 : MonoBehaviour
     public GameObject enemygoal;
     public GameObject goalcanvas;
     public GameObject goalcanvas2;
+    public GameObject Dcanvas;
+    public GameObject Wcanvas;
     public int Width
     {
         get { return _width; }
@@ -165,6 +167,7 @@ public class player2 : MonoBehaviour
         {
             if (test <3)
             {
+                Dcanvas.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.D) && playerTurn && !goal)
                 {
                     audioSource.PlayOneShot(sound1);
@@ -174,6 +177,7 @@ public class player2 : MonoBehaviour
                     UpdatePlayerPosition(moveX, moveY);
                     test = test + 1;
                     Invoke("Enemymove", 1.0f);
+                    
                 }
             }
 
@@ -187,8 +191,12 @@ public class player2 : MonoBehaviour
 
             if (test == 3)
             {
+                Dcanvas.SetActive(false);
+                Wcanvas.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.W) && playerTurn && !goal)
                 {
+                    
+                    
                     audioSource.PlayOneShot(sound1);
                     moveX = 0;
                     moveY = 1;

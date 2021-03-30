@@ -8,6 +8,7 @@ public class skill_tutorial : MonoBehaviour
     AudioSource audioSource;
     public AudioClip sound;
     public GameObject button1;
+    public GameObject Wcanvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,7 @@ public class skill_tutorial : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         stagemaker.GetComponent<player3>().playerTurn = false;
         button1.SetActive(false);
+        Wcanvas.SetActive(true);
         audioSource.PlayOneShot(sound);
         stagemaker.GetComponent<player3>().Enemymove();
       }

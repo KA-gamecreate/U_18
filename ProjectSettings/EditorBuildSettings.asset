@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/title.unity
+    guid: 68deb26af83a54a549688a8dd4fefc09
+  - enabled: 1
     path: Assets/Scenes/sentou_test.unity
     guid: fe6294fc2306344d2a93777caee21b8d
   - enabled: 1
@@ -23,9 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/shop.unity
     guid: b16c0ca6b62e6429a885c19524636fb3
-  - enabled: 1
-    path: Assets/Scenes/title.unity
-    guid: 68deb26af83a54a549688a8dd4fefc09
   - enabled: 1
     path: Assets/Scenes/sentou2.unity
     guid: ad0988f1a916f4264a326f0bf5b3bd35

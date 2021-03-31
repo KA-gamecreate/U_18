@@ -2480,7 +2480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3388,7 +3388,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 64.993965
     y: 73.018105
-    width: 104.32596
+    width: 64.32596
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3440,7 +3440,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1110782243}
   selectedCommands:
-  - {fileID: 1110782244}
+  - {fileID: 1110782242}
   variables: []
   description: 
   stepPause: 0
@@ -3731,7 +3731,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 236
     y: 115.993965
-    width: 111.36821
+    width: 71.36821
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6443,6 +6443,18 @@ MonoBehaviour:
   enemygoal: {fileID: 0}
   goalcanvas: {fileID: 0}
   goalcanvas2: {fileID: 0}
+  yourturn: {fileID: 0}
+  enemyturn: {fileID: 0}
+  ribon: {fileID: 0}
+  sen: {fileID: 0}
+  hat: {fileID: 0}
+  himawari: {fileID: 0}
+  orange: {fileID: 0}
+  happa: {fileID: 0}
+  cat: {fileID: 0}
+  hiyoko: {fileID: 0}
+  tensi: {fileID: 0}
+  num: 0
 --- !u!4 &1988342227
 Transform:
   m_ObjectHideFlags: 0

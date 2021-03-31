@@ -3336,7 +3336,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 288.0807
     y: 197.38422
-    width: 104.20836
+    width: 64.20836
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4030,7 +4030,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 203.80707
     y: 112.577415
-    width: 149.14423
+    width: 109.144226
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4343,7 +4343,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 75.3709
     y: 79.24941
-    width: 149.14423
+    width: 109.144226
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6127,7 +6127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -6887,6 +6887,18 @@ MonoBehaviour:
   enemygoal: {fileID: 0}
   goalcanvas: {fileID: 0}
   goalcanvas2: {fileID: 0}
+  yourturn: {fileID: 0}
+  enemyturn: {fileID: 0}
+  ribon: {fileID: 0}
+  sen: {fileID: 0}
+  hat: {fileID: 0}
+  himawari: {fileID: 0}
+  orange: {fileID: 0}
+  happa: {fileID: 0}
+  cat: {fileID: 0}
+  hiyoko: {fileID: 0}
+  tensi: {fileID: 0}
+  num: 0
 --- !u!4 &1988342227
 Transform:
   m_ObjectHideFlags: 0

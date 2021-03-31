@@ -39,8 +39,14 @@ public class shop : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L))
         {
             PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") + 10000);
+            PlayerPrefs.Save();
         }
-        if(PlayerPrefs.GetInt("SCORE") < 200)
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            PlayerPrefs.DeleteKey("MONEY");
+            PlayerPrefs.Save();
+        }
+        if (PlayerPrefs.GetInt("SCORE") < 200)
         {
             ribonb.SetActive(false);
             happab.SetActive(false);
@@ -263,6 +269,7 @@ public class shop : MonoBehaviour
     public void Riboncancel()
     {
         ribon.SetActive(false);
+        
     }
     public void Hatcancel()
     {

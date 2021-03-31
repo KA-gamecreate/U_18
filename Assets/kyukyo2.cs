@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class player1 : MonoBehaviour
+public class kyukyo2 : MonoBehaviour
 {
 
     public bool playerTurn;
@@ -95,19 +95,23 @@ public class player1 : MonoBehaviour
 
         }
     }
-    public int[,] stageArray = new int[6, 8]{
+    public int[,] stageArray = new int[8, 8]{
         //0は床 1は壁 2は自機 3は敵機
         {1,1,1,1,1,1,1,1},
-        {1,0,0,0,0,0,3,1},
+        {1,1,0,0,0,0,3,1},
         {1,0,0,0,0,0,0,1},
         {1,0,0,0,0,0,0,1},
-        {1,2,0,0,0,0,0,1},
+        {1,0,0,0,0,0,0,1},
+        {1,0,0,0,0,0,0,1},
+        {1,2,0,0,0,0,1,1},
         {1,1,1,1,1,1,1,1},
     };
-    public int[,] goalArray = new int[6, 8]{
+    public int[,] goalArray = new int[8, 8]{
         //1は自陣 2は敵陣
         {0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,2,0},
+        {0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0},
         {0,1,0,0,0,0,0,0},
@@ -122,7 +126,7 @@ public class player1 : MonoBehaviour
         playerTurn = true;
         yourturn.SetActive(true);
         enemyturn.SetActive(false);
-       
+
         for (int i = 0; i < stageArray.GetLength(0); i++)
         {
             for (int j = 0; j < stageArray.GetLength(1); j++)
@@ -161,7 +165,7 @@ public class player1 : MonoBehaviour
     }
     void Update()
     {
-        if(PlayerPrefs.GetInt("MONEY") == 1)
+        if (PlayerPrefs.GetInt("MONEY") == 1)
         {
             ribon.SetActive(true);
         }
@@ -200,7 +204,7 @@ public class player1 : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.L))
         {
-            PlayerPrefs.SetInt("SCORE", num = num +10000);
+            PlayerPrefs.SetInt("SCORE", num = num + 10000);
             PlayerPrefs.Save();
         }
         if (Input.GetKeyDown(KeyCode.P))
@@ -209,7 +213,7 @@ public class player1 : MonoBehaviour
             PlayerPrefs.Save();
         }
         Debug.Log(PlayerPrefs.GetInt("SCORE"));
-        if(playerTurn == false)
+        if (playerTurn == false)
         {
             yourturn.SetActive(false);
             enemyturn.SetActive(true);
@@ -233,16 +237,16 @@ public class player1 : MonoBehaviour
         }
         if (player.activeSelf == true)
         {
-          
+
             if (Input.GetKeyDown(KeyCode.D) && playerTurn && !goal)
             {
-                
+
                 audioSource.PlayOneShot(sound1);
                 moveX = -1;
                 moveY = 0;
                 playerTurn = false;
                 UpdatePlayerPosition(moveX, moveY);
-                
+
 
 
             }
@@ -284,7 +288,7 @@ public class player1 : MonoBehaviour
         }
         if (enemy.activeSelf == true)
         {
-           
+
 
             if (!playerTurn && !goal)
             {
@@ -292,7 +296,7 @@ public class player1 : MonoBehaviour
 
                 Debug.Log("?");
             }
-           
+
             else
             {
                 moveX = 0;
@@ -309,12 +313,12 @@ public class player1 : MonoBehaviour
     }
     public void Enemyway()
     {
-        
+
         enemynum = Random.Range(1, 3);
         Debug.Log(enemynum);
-        if (enemynum == 1 )
+        if (enemynum == 1)
         {
-      
+
             audioSource.PlayOneShot(sound1);
             moveX = 0;
             moveY = -1;
@@ -324,7 +328,7 @@ public class player1 : MonoBehaviour
         }
         if (enemynum == 2)
         {
-         
+
             audioSource.PlayOneShot(sound1);
             moveX = 1;
             moveY = 0;
@@ -378,7 +382,7 @@ public class player1 : MonoBehaviour
                     audioSource.PlayOneShot(sound3);
                     goal = true;
                     Debug.Log("うるさ");
-                    PlayerPrefs.SetInt("SCORE", num+10);
+                    PlayerPrefs.SetInt("SCORE", num + 50);
                     PlayerPrefs.Save();
                 }
 

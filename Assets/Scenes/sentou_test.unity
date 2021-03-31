@@ -714,7 +714,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a00bcc672973844128c87195a876e629, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2371,6 +2371,8 @@ MonoBehaviour:
   enemygoal: {fileID: 0}
   goalcanvas: {fileID: 0}
   goalcanvas2: {fileID: 0}
+  Dcanvas: {fileID: 0}
+  Wcanvas: {fileID: 0}
 --- !u!4 &1440821997
 Transform:
   m_ObjectHideFlags: 0
@@ -3885,6 +3887,8 @@ MonoBehaviour:
   enemygoal: {fileID: 0}
   goalcanvas: {fileID: 0}
   goalcanvas2: {fileID: 0}
+  yourturn: {fileID: 0}
+  enemyturn: {fileID: 0}
 --- !u!4 &1988342227
 Transform:
   m_ObjectHideFlags: 0

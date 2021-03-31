@@ -30,6 +30,16 @@ public class player1 : MonoBehaviour
     public GameObject goalcanvas2;
     public GameObject yourturn;
     public GameObject enemyturn;
+    public GameObject ribon;
+    public GameObject sen;
+    public GameObject hat;
+    public GameObject himawari;
+    public GameObject orange;
+    public GameObject happa;
+    public GameObject cat;
+    public GameObject hiyoko;
+    public GameObject tensi;
+    public int num;
     public int Width
 
     {
@@ -151,6 +161,54 @@ public class player1 : MonoBehaviour
     }
     void Update()
     {
+        if(PlayerPrefs.GetInt("MONEY") == 1)
+        {
+            ribon.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("MONEY") == 2)
+        {
+            sen.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("MONEY") == 3)
+        {
+            hat.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("MONEY") == 4)
+        {
+            himawari.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("MONEY") == 5)
+        {
+            orange.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("MONEY") == 6)
+        {
+            happa.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("MONEY") == 7)
+        {
+            cat.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("MONEY") == 8)
+        {
+            hiyoko.SetActive(true);
+        }
+        if (PlayerPrefs.GetInt("MONEY") == 9)
+        {
+            tensi.SetActive(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            PlayerPrefs.SetInt("SCORE", num = num +10000);
+            PlayerPrefs.Save();
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            PlayerPrefs.DeleteKey("SCORE");
+            PlayerPrefs.Save();
+        }
+        Debug.Log(PlayerPrefs.GetInt("SCORE"));
         if(playerTurn == false)
         {
             yourturn.SetActive(false);
@@ -320,6 +378,8 @@ public class player1 : MonoBehaviour
                     audioSource.PlayOneShot(sound3);
                     goal = true;
                     Debug.Log("うるさ");
+                    PlayerPrefs.SetInt("SCORE", num+100);
+                    PlayerPrefs.Save();
                 }
 
             }

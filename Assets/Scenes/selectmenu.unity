@@ -1748,6 +1748,16 @@ MonoBehaviour:
   orange: {fileID: 761831749}
   change: {fileID: 518854392}
   kigaeta: {fileID: 1379426132}
+  gjArray:
+  - {fileID: 670299524}
+  - {fileID: 738233819}
+  - {fileID: 1828360168}
+  - {fileID: 410240968}
+  - {fileID: 761831749}
+  - {fileID: 677735170}
+  - {fileID: 1880009086}
+  - {fileID: 50625303}
+  - {fileID: 1387884451}
 --- !u!4 &864905258
 Transform:
   m_ObjectHideFlags: 0

@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class shop : MonoBehaviour
 {
+    //シーンまたいで着せ替えの持ってるかのオンオフ取得
+    public static int[] KisekaeOnOff = {0,0,0,0,0,0,0,0,0};
+    //falseで買ってないよってこと
+    public static bool[] Katta = {false, false,false, false, false, false, false, false, false};
     public Text moneytext;
     public GameObject cat;
     public GameObject happa;
@@ -27,25 +31,35 @@ public class shop : MonoBehaviour
     public GameObject orangeb;
     // Start is called before the first frame update
     void Start()
-    {
-        
+    { 
         moneytext.text = "所持金：" + PlayerPrefs.GetInt("SCORE");
-    }
+        for (int i = 0; i < KisekaeOnOff.Length; i++)
+        {
+            if (PlayerPrefs.GetInt("MONEY" + i) == 1)
+            {
+                Katta[i] = true;
+                
+            }
+            else
+            {
+                Katta[i] = false;
+
+            }
+        }
+        }
 
     // Update is called once per frame
     void Update()
     {
+        
         moneytext.text = "所持金：" + PlayerPrefs.GetInt("SCORE");
         if (Input.GetKeyDown(KeyCode.L))
         {
             PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") + 10000);
             PlayerPrefs.Save();
         }
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            PlayerPrefs.DeleteKey("MONEY");
-            PlayerPrefs.Save();
-        }
+
+
         if (PlayerPrefs.GetInt("SCORE") < 200)
         {
             ribonb.SetActive(false);
@@ -174,7 +188,10 @@ public class shop : MonoBehaviour
     public void Catbuy()
     {
         PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") -800);
-        PlayerPrefs.SetInt("MONEY",7);
+
+        //配列の、該当箇所を0->1に変更する
+      
+        Katta[6] = true;
         PlayerPrefs.Save();
         cat.SetActive(false);
     }
@@ -185,7 +202,8 @@ public class shop : MonoBehaviour
     public void Happabuy()
     {
         PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 700);
-        PlayerPrefs.SetInt("MONEY", 6);
+       
+        Katta[5] = true;
         PlayerPrefs.Save();
         happa.SetActive(false);
     }
@@ -196,7 +214,8 @@ public class shop : MonoBehaviour
     public void Senbuy()
     {
         PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 300);
-        PlayerPrefs.SetInt("MONEY", 2);
+        
+        Katta[1] = true;
         PlayerPrefs.Save();
         sen.SetActive(false);
     }
@@ -207,7 +226,8 @@ public class shop : MonoBehaviour
     public void Hatbuy()
     {
         PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 400);
-        PlayerPrefs.SetInt("MONEY", 3);
+       
+        Katta[2] = true;
         PlayerPrefs.Save();
         hat.SetActive(false);
     }
@@ -218,7 +238,8 @@ public class shop : MonoBehaviour
     public void Himawaribuy()
     {
         PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 500);
-        PlayerPrefs.SetInt("MONEY", 4);
+        
+        Katta[3] = true;
         PlayerPrefs.Save();
         himawari.SetActive(false);
     }
@@ -229,7 +250,8 @@ public class shop : MonoBehaviour
     public void Ribonbuy()
     {
         PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 200);
-        PlayerPrefs.SetInt("MONEY", 1);
+       
+        Katta[0] = true;
         PlayerPrefs.Save();
         ribon.SetActive(false);
     }
@@ -240,7 +262,8 @@ public class shop : MonoBehaviour
     public void Tensibuy()
     {
         PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 1000);
-        PlayerPrefs.SetInt("MONEY", 9);
+        
+        Katta[8] = true;
         PlayerPrefs.Save();
         tensi.SetActive(false);
     }
@@ -251,7 +274,8 @@ public class shop : MonoBehaviour
     public void Hiyokobuy()
     {
         PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 900);
-        PlayerPrefs.SetInt("MONEY", 8);
+        
+        Katta[7] = true;
         PlayerPrefs.Save();
         hiyoko.SetActive(false);
     }
@@ -262,7 +286,8 @@ public class shop : MonoBehaviour
     public void Orangebuy()
     {
         PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 600);
-        PlayerPrefs.SetInt("MONEY", 5);
+       
+        Katta[4] = true;
         PlayerPrefs.Save();
         orange.SetActive(false);
     }
@@ -305,6 +330,25 @@ public class shop : MonoBehaviour
     }
     public void TITLE()
     {
+        for (int i = 0; i < KisekaeOnOff.Length; i++)
+        {
+            if (Katta[i] == true)
+            {
+                KisekaeOnOff[i] = 1;
+            }
+            else
+            {
+                KisekaeOnOff[i] = 0;
+            }
+        }
+        for (int i = 0; i < KisekaeOnOff.Length; i++)
+        {
+            PlayerPrefs.SetInt("MONEY" + i, KisekaeOnOff[i]);
+        }
+            PlayerPrefs.Save();
+
+       
         SceneManager.LoadScene("selectmenu");
+
     }
 }

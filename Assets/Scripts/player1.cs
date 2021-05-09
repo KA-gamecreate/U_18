@@ -161,39 +161,39 @@ public class player1 : MonoBehaviour
     }
     void Update()
     {
-        if(PlayerPrefs.GetInt("MONEY") == 1)
+        if(PlayerPrefs.GetInt("KIGAE") == 1)
         {
             ribon.SetActive(true);
         }
-        if (PlayerPrefs.GetInt("MONEY") == 2)
+        if (PlayerPrefs.GetInt("KIGAE") == 2)
         {
             sen.SetActive(true);
         }
-        if (PlayerPrefs.GetInt("MONEY") == 3)
+        if (PlayerPrefs.GetInt("KIGAE") == 3)
         {
             hat.SetActive(true);
         }
-        if (PlayerPrefs.GetInt("MONEY") == 4)
+        if (PlayerPrefs.GetInt("KIGAE") == 4)
         {
             himawari.SetActive(true);
         }
-        if (PlayerPrefs.GetInt("MONEY") == 5)
+        if (PlayerPrefs.GetInt("KIGAE") == 5)
         {
             orange.SetActive(true);
         }
-        if (PlayerPrefs.GetInt("MONEY") == 6)
+        if (PlayerPrefs.GetInt("KIGAE") == 6)
         {
             happa.SetActive(true);
         }
-        if (PlayerPrefs.GetInt("MONEY") == 7)
+        if (PlayerPrefs.GetInt("KIGAE") == 7)
         {
             cat.SetActive(true);
         }
-        if (PlayerPrefs.GetInt("MONEY") == 8)
+        if (PlayerPrefs.GetInt("KIGAE") == 8)
         {
             hiyoko.SetActive(true);
         }
-        if (PlayerPrefs.GetInt("MONEY") == 9)
+        if (PlayerPrefs.GetInt("KIGAE") == 9)
         {
             tensi.SetActive(true);
         }

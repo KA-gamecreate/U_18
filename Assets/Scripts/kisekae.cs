@@ -15,63 +15,46 @@ public class kisekae : MonoBehaviour
     public GameObject orange;
     public GameObject change;
     public GameObject kigaeta;
+    public GameObject[] gjArray = new GameObject[9];
+    //表示するボタンをいれるだけのやつ
+
+
+
     // Start is called before the first frame update
-    void Awake()
-    {
-       
-        DontDestroyOnLoad(this);
 
-
-    }
     void Start()
     {
-        
+        for (int i = 0; i < shop.KisekaeOnOff.GetLength(0); i++)
+        {
+          if(PlayerPrefs.GetInt("MONEY" + i) == 1)
+            {
+                shop.Katta[i] = true;
+                gjArray[i].SetActive(true);
+               
+            }
+            else
+            {
+                shop.Katta[i] = false;
+                gjArray[i].SetActive(false);
+       
+            }
+            
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-   
-
-
-
-
-
-        if (PlayerPrefs.GetInt("MONEY") == 1)
+        for (int i = 0; i < shop.KisekaeOnOff.Length; i++)
         {
-            ribon.SetActive(true);
-        }
-        if (PlayerPrefs.GetInt("MONEY") == 2)
-        {
-            sen.SetActive(true);
-        }
-        if (PlayerPrefs.GetInt("MONEY") == 3)
-        {
-            hat.SetActive(true);
-        }
-        if (PlayerPrefs.GetInt("MONEY") == 4)
-        {
-            himawari.SetActive(true);
-        }
-        if (PlayerPrefs.GetInt("MONEY") == 5)
-        {
-            orange.SetActive(true);
-        }
-        if (PlayerPrefs.GetInt("MONEY") == 6)
-        {
-            happa.SetActive(true);
-        }
-        if (PlayerPrefs.GetInt("MONEY") == 7)
-        {
-            cat.SetActive(true);
-        }
-        if (PlayerPrefs.GetInt("MONEY") == 8)
-        {
-            hiyoko.SetActive(true);
-        }
-        if (PlayerPrefs.GetInt("MONEY") == 9)
-        {
-            tensi.SetActive(true);
+            if (shop.Katta[i] == true)
+            {
+                gjArray[i].SetActive(true);
+            }
+            else
+            {
+                gjArray[i].SetActive(false);
+            }
         }
     }
     public void Kisekae()
@@ -149,7 +132,7 @@ public class kisekae : MonoBehaviour
     }
     public void Tensi()
     {
-           kigaeta.SetActive(true);
+        kigaeta.SetActive(true);
         Invoke("Kigaenai", 1.0f);
         PlayerPrefs.SetInt("KIGAE", 9);
      

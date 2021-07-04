@@ -10,7 +10,7 @@ public class gatya : MonoBehaviour
     public GameObject GatyaShop;
     public GameObject[] Picture;
     public bool[] Result;
-    public float[] Gatya = new float[6];
+    float[] Gatya = {0.2f,0.1f,0.1f,0.3f,0.2f,0.1f};
     public float sum;
     public float RANDOM;
     
@@ -18,12 +18,7 @@ public class gatya : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Gatya[0] = 0.2f;
-        Gatya[1] = 0.1f;
-        Gatya[2] = 0.1f;
-        Gatya[3] = 0.3f;
-        Gatya[4] = 0.2f;
-        Gatya[5] = 0.1f;
+        
     }
 
     // Update is called once per frame
@@ -64,17 +59,17 @@ public class gatya : MonoBehaviour
             RANDOM = Random.Range(0f,1.0f);
             sum = 0f;
 
-            Debug.Log("a");
-            Debug.Log("Length:" + Gatya[1]);
-            for (int i = 0; i < 6; i++)
+            
+            for (int i = 0; i < Gatya.Length; i++)
             {
-                Debug.Log(sum);
+
                 sum += Gatya[i];
                 if(sum > RANDOM)
                 {
                     //return i;
-                    Debug.Log(RANDOM);
-                    Debug.Log(sum);
+                    Debug.Log("RANDOM"+RANDOM);
+                    Debug.Log("sum"+sum);
+                    break;
                 }
             }
             PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 200);

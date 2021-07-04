@@ -10,28 +10,15 @@ public class shop : MonoBehaviour
     public static int[] KisekaeOnOff = {0,0,0,0,0,0,0,0,0};
     //falseで買ってないよってこと
     public static bool[] Katta = {false, false,false, false, false, false, false, false, false};
+    public GameObject[] gbArray = new GameObject[9];
     public Text moneytext;
-    public GameObject cat;
-    public GameObject happa;
-    public GameObject sen;
-    public GameObject hat;
-    public GameObject himawari;
-    public GameObject ribon;
-    public GameObject hiyoko;
-    public GameObject tensi;
-    public GameObject orange;
-    public GameObject catb;
-    public GameObject happab;
-    public GameObject senb;
-    public GameObject hatb;
-    public GameObject himawarib;
-    public GameObject ribonb;
-    public GameObject hiyokob;
-    public GameObject tensib;
-    public GameObject orangeb;
+
+    public Text detailtext;
+    public GameObject gamen;
     // Start is called before the first frame update
     void Start()
-    { 
+    {
+        Debug.Log(PlayerPrefs.GetInt("MONEY"));
         moneytext.text = "所持金：" + PlayerPrefs.GetInt("SCORE");
         for (int i = 0; i < KisekaeOnOff.Length; i++)
         {
@@ -62,271 +49,297 @@ public class shop : MonoBehaviour
 
         if (PlayerPrefs.GetInt("SCORE") < 200)
         {
-            ribonb.SetActive(false);
-            happab.SetActive(false);
-            catb.SetActive(false);
-            tensib.SetActive(false);
-            senb.SetActive(false);
-            himawarib.SetActive(false);
-            hatb.SetActive(false);
-            hiyokob.SetActive(false);
-            orangeb.SetActive(false);
+            gbArray[0].SetActive(false);
+            gbArray[1].SetActive(false);
+            gbArray[2].SetActive(false);
+            gbArray[3].SetActive(false);
+            gbArray[4].SetActive(false);
+            gbArray[5].SetActive(false);
+            gbArray[6].SetActive(false);
+            gbArray[7].SetActive(false);
+            gbArray[8].SetActive(false);
+    
+
         }
         if (PlayerPrefs.GetInt("SCORE") >= 200)
         {
-            ribonb.SetActive(true);
-            happab.SetActive(false);
-            catb.SetActive(false);
-            tensib.SetActive(false);
-            senb.SetActive(false);
-            himawarib.SetActive(false);
-            hatb.SetActive(false);
-            hiyokob.SetActive(false);
-            orangeb.SetActive(false);
+            gbArray[0].SetActive(true);
+            gbArray[1].SetActive(false);
+            gbArray[2].SetActive(false);
+            gbArray[3].SetActive(false);
+            gbArray[4].SetActive(false);
+            gbArray[5].SetActive(false);
+            gbArray[6].SetActive(false);
+            gbArray[7].SetActive(false);
+            gbArray[8].SetActive(false);
+
         }
         if (PlayerPrefs.GetInt("SCORE") >= 300)
         {
-            ribonb.SetActive(true);
-            happab.SetActive(false);
-            catb.SetActive(false);
-            tensib.SetActive(false);
-            senb.SetActive(true);
-            himawarib.SetActive(false);
-            hatb.SetActive(false);
-            hiyokob.SetActive(false);
-            orangeb.SetActive(false);
+            gbArray[0].SetActive(true);
+            gbArray[1].SetActive(true);
+            gbArray[2].SetActive(false);
+            gbArray[3].SetActive(false);
+            gbArray[4].SetActive(false);
+            gbArray[5].SetActive(false);
+            gbArray[6].SetActive(false);
+            gbArray[7].SetActive(false);
+            gbArray[8].SetActive(false);
+
         }
         if (PlayerPrefs.GetInt("SCORE") >= 400)
         {
-            ribonb.SetActive(true);
-            happab.SetActive(false);
-            catb.SetActive(false);
-            tensib.SetActive(false);
-            senb.SetActive(true);
-            himawarib.SetActive(false);
-            hatb.SetActive(true);
-            hiyokob.SetActive(false);
-            orangeb.SetActive(false);
+            gbArray[0].SetActive(true);
+            gbArray[1].SetActive(true);
+            gbArray[2].SetActive(true);
+            gbArray[3].SetActive(false);
+            gbArray[4].SetActive(false);
+            gbArray[5].SetActive(false);
+            gbArray[6].SetActive(false);
+            gbArray[7].SetActive(false);
+            gbArray[8].SetActive(false);
+
         }
         if (PlayerPrefs.GetInt("SCORE") >= 500)
         {
-            ribonb.SetActive(true);
-            happab.SetActive(false);
-            catb.SetActive(false);
-            tensib.SetActive(false);
-            senb.SetActive(true);
-            himawarib.SetActive(true);
-            hatb.SetActive(true);
-            hiyokob.SetActive(false);
-            orangeb.SetActive(false);
+            gbArray[0].SetActive(true);
+            gbArray[1].SetActive(true);
+            gbArray[2].SetActive(true);
+            gbArray[3].SetActive(true);
+            gbArray[4].SetActive(false);
+            gbArray[5].SetActive(false);
+            gbArray[6].SetActive(false);
+            gbArray[7].SetActive(false);
+            gbArray[8].SetActive(false);
+
         }
         if (PlayerPrefs.GetInt("SCORE") >= 600)
         {
-            ribonb.SetActive(true);
-            happab.SetActive(false);
-            catb.SetActive(false);
-            tensib.SetActive(false);
-            senb.SetActive(true);
-            himawarib.SetActive(true);
-            hatb.SetActive(true);
-            hiyokob.SetActive(false);
-            orangeb.SetActive(true);
+            gbArray[0].SetActive(true);
+            gbArray[1].SetActive(true);
+            gbArray[2].SetActive(true);
+            gbArray[3].SetActive(true);
+            gbArray[4].SetActive(true);
+            gbArray[5].SetActive(false);
+            gbArray[6].SetActive(false);
+            gbArray[7].SetActive(false);
+            gbArray[8].SetActive(false);
+
         }
         if (PlayerPrefs.GetInt("SCORE") >= 700)
         {
-            ribonb.SetActive(true);
-            happab.SetActive(true);
-            catb.SetActive(false);
-            tensib.SetActive(false);
-            senb.SetActive(true);
-            himawarib.SetActive(true);
-            hatb.SetActive(true);
-            hiyokob.SetActive(false);
-            orangeb.SetActive(true);
+            gbArray[0].SetActive(true);
+            gbArray[1].SetActive(true);
+            gbArray[2].SetActive(true);
+            gbArray[3].SetActive(true);
+            gbArray[4].SetActive(true);
+            gbArray[5].SetActive(true);
+            gbArray[6].SetActive(false);
+            gbArray[7].SetActive(false);
+            gbArray[8].SetActive(false);
+ 
         }
         if (PlayerPrefs.GetInt("SCORE") >= 800)
         {
-            ribonb.SetActive(true);
-            happab.SetActive(true);
-            catb.SetActive(true);
-            tensib.SetActive(false);
-            senb.SetActive(true);
-            himawarib.SetActive(true);
-            hatb.SetActive(true);
-            hiyokob.SetActive(false);
-            orangeb.SetActive(true);
+            gbArray[0].SetActive(true);
+            gbArray[1].SetActive(true);
+            gbArray[2].SetActive(true);
+            gbArray[3].SetActive(true);
+            gbArray[4].SetActive(true);
+            gbArray[5].SetActive(true);
+            gbArray[6].SetActive(true);
+            gbArray[7].SetActive(true);
+            gbArray[8].SetActive(false);
+
         }
         if (PlayerPrefs.GetInt("SCORE") >= 900)
         {
-            ribonb.SetActive(true);
-            happab.SetActive(true);
-            catb.SetActive(true);
-            tensib.SetActive(false);
-            senb.SetActive(true);
-            himawarib.SetActive(true);
-            hatb.SetActive(true);
-            hiyokob.SetActive(true);
-            orangeb.SetActive(true);
+            gbArray[0].SetActive(true);
+            gbArray[1].SetActive(true);
+            gbArray[2].SetActive(true);
+            gbArray[3].SetActive(true);
+            gbArray[4].SetActive(true);
+            gbArray[5].SetActive(true);
+            gbArray[6].SetActive(true);
+            gbArray[7].SetActive(true);
+            gbArray[8].SetActive(true);
+
         }
         if (PlayerPrefs.GetInt("SCORE") >= 1000)
         {
-            ribonb.SetActive(true);
-            happab.SetActive(true);
-            catb.SetActive(true);
-            tensib.SetActive(true);
-            senb.SetActive(true);
-            himawarib.SetActive(true);
-            hatb.SetActive(true);
-            hiyokob.SetActive(true);
-            orangeb.SetActive(true);
+            gbArray[0].SetActive(true);
+            gbArray[1].SetActive(true);
+            gbArray[2].SetActive(true);
+            gbArray[3].SetActive(true);
+            gbArray[4].SetActive(true);
+            gbArray[5].SetActive(true);
+            gbArray[6].SetActive(true);
+            gbArray[7].SetActive(true);
+            gbArray[8].SetActive(true);
+
         }
     }
     public void Cat()
     {
-        cat.SetActive(true);
+        gamen.SetActive(true);
+        detailtext.text = "ねこ " +
+        "可愛いは正義。" +
+        "つまり猫は正義。".ToString();
+   
     }
-    public void Catbuy()
-    {
-        PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") -800);
-
-        //配列の、該当箇所を0->1に変更する
-      
-        Katta[6] = true;
-        PlayerPrefs.Save();
-        cat.SetActive(false);
-    }
+  
     public void Happa()
     {
-        happa.SetActive(true);
+        gamen.SetActive(true);
+        detailtext.text = "葉っぱ " +
+        "なんか生えてきた。" +
+        "体に害はないよ。".ToString();
     }
-    public void Happabuy()
-    {
-        PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 700);
-       
-        Katta[5] = true;
-        PlayerPrefs.Save();
-        happa.SetActive(false);
-    }
+    
     public void Sen()
     {
-        sen.SetActive(true);
+        gamen.SetActive(true);
+        detailtext.text = "集中線 " +
+        "主人公気分の味わえる線。" +
+        "ハリネズミじゃないよ。".ToString();
     }
-    public void Senbuy()
-    {
-        PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 300);
-        
-        Katta[1] = true;
-        PlayerPrefs.Save();
-        sen.SetActive(false);
-    }
+ 
     public void Hat()
     {
-        hat.SetActive(true);
+        gamen.SetActive(true);
+        detailtext.text = "ハット " +
+        "マジシャンの被ってそうな帽子。" +
+        "紳士っぽくなれるよ。".ToString();
     }
-    public void Hatbuy()
-    {
-        PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 400);
-       
-        Katta[2] = true;
-        PlayerPrefs.Save();
-        hat.SetActive(false);
-    }
+    
     public void Himawari()
     {
-        himawari.SetActive(true);
+        gamen.SetActive(true);
+        detailtext.text = "ひまわり " +
+        "どこかの気難しい魔女の向日葵。" +
+        "永久にしおれることは無い。".ToString();
     }
-    public void Himawaribuy()
-    {
-        PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 500);
-        
-        Katta[3] = true;
-        PlayerPrefs.Save();
-        himawari.SetActive(false);
-    }
+  
     public void Ribon()
     {
-        ribon.SetActive(true);
+        gamen.SetActive(true);
+        detailtext.text = "リボン " +
+        "妙にギャルギャルしい。" +
+        "近頃じゃ珍しいリボン。".ToString();
     }
-    public void Ribonbuy()
-    {
-        PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 200);
-       
-        Katta[0] = true;
-        PlayerPrefs.Save();
-        ribon.SetActive(false);
-    }
+   
     public void Tensi()
     {
-        tensi.SetActive(true);
+        gamen.SetActive(true);
+        detailtext.text = "天使 " +
+        "可愛さが限界突破して天使になった。" +
+        "空が飛べたりはしない。".ToString();
     }
-    public void Tensibuy()
-    {
-        PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 1000);
-        
-        Katta[8] = true;
-        PlayerPrefs.Save();
-        tensi.SetActive(false);
-    }
+
     public void Hiyoko()
     {
-        hiyoko.SetActive(true);
+        gamen.SetActive(true);
+        detailtext.text = "ひよこ " +
+        "お風呂に浮かべて遊ぶやつ。" +
+        "何歳になっても楽しいよね。".ToString();    
     }
-    public void Hiyokobuy()
-    {
-        PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 900);
-        
-        Katta[7] = true;
-        PlayerPrefs.Save();
-        hiyoko.SetActive(false);
-    }
+
     public void Orange()
     {
-        orange.SetActive(true);
+        gamen.SetActive(true);
+        detailtext.text = "みかん " +
+        "ついつい食べすぎちゃうやつ。" +
+        "体がオレンジになりそう。".ToString();
     }
-    public void Orangebuy()
+    public void Kau()
     {
-        PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 600);
-       
-        Katta[4] = true;
-        PlayerPrefs.Save();
-        orange.SetActive(false);
+        if (detailtext.text == "みかん " +
+        "ついつい食べすぎちゃうやつ。" +
+        "体がオレンジになりそう。")
+        {
+            PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 600);
+            Katta[4] = true;
+            PlayerPrefs.Save();
+        }
+        if(detailtext.text == "ひよこ " +
+        "お風呂に浮かべて遊ぶやつ。" +
+        "何歳になっても楽しいよね。")
+        {
+            PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 900);
+
+            Katta[7] = true;
+            PlayerPrefs.Save();
+        }
+        if (detailtext.text == "天使 " +
+        "可愛さが限界突破して天使になった。" +
+        "空が飛べたりはしない。")
+        {
+            PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 1000);
+
+            Katta[8] = true;
+            PlayerPrefs.Save();
+        }
+        if (detailtext.text == "リボン " +
+        "妙にギャルギャルしい。" +
+        "近頃じゃ珍しいリボン。")
+        {
+            PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 200);
+
+            Katta[0] = true;
+            PlayerPrefs.Save();
+        }
+        if (detailtext.text == "ひまわり " +
+        "どこかの気難しい魔女の向日葵。" +
+        "永久にしおれることは無い。")
+        {
+            PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 500);
+
+            Katta[3] = true;
+            PlayerPrefs.Save();
+        }
+        if (detailtext.text == "ハット " +
+        "マジシャンの被ってそうな帽子。" +
+        "紳士っぽくなれるよ。")
+        {
+            PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 400);
+
+            Katta[2] = true;
+            PlayerPrefs.Save();
+        }
+        if (detailtext.text ==  "集中線 " +
+        "主人公気分の味わえる線。" +
+        "ハリネズミじゃないよ。")
+        {
+            PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 300);
+
+            Katta[1] = true;
+            PlayerPrefs.Save();
+        }
+        if (detailtext.text == "葉っぱ " +
+        "なんか生えてきた。" +
+        "体に害はないよ。")
+        {
+            PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 700);
+
+            Katta[5] = true;
+            PlayerPrefs.Save();
+        }
+        if (detailtext.text == "ねこ " +
+        "可愛いは正義。" +
+        "つまり猫は正義。")
+        {
+
+            PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 800);
+            Katta[6] = true;
+            PlayerPrefs.Save();
+        }
+
+
     }
-    public void Riboncancel()
+    public void Kawanai()
     {
-        ribon.SetActive(false);
-        
-    }
-    public void Hatcancel()
-    {
-        hat.SetActive(false);
-    }
-    public void Catcancel()
-    {
-        cat.SetActive(false);
-    }
-    public void Sencancel()
-    {
-        sen.SetActive(false);
-    }
-    public void Happacancel()
-    {
-        happa.SetActive(false);
-    }
-    public void Himawaricancel()
-    {
-        himawari.SetActive(false);
-    }
-    public void Orangecancel()
-    {
-        orange.SetActive(false);
-    }
-    public void Hiyokocancel()
-    {
-        hiyoko.SetActive(false);
-    }
-    public void Tensicancel()
-    {
-        tensi.SetActive(false);
+         detailtext.text = "".ToString();
+         gamen.SetActive(false);
     }
     public void TITLE()
     {

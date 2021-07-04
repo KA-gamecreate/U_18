@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class kisekae : MonoBehaviour
 {
-    public GameObject cat;
-    public GameObject happa;
-    public GameObject sen;
-    public GameObject hat;
-    public GameObject himawari;
-    public GameObject ribon;
-    public GameObject hiyoko;
-    public GameObject tensi;
-    public GameObject orange;
+  
     public GameObject change;
     public GameObject kigaeta;
     public GameObject[] gjArray = new GameObject[9];

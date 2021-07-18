@@ -4,6 +4,7 @@
 using UnityEngine;
 using UnityEditor.Experimental.AssetImporters;
 using System.IO;
+using UnityEditor.AssetImporters;
 
 namespace Fungus.EditorUtils
 {

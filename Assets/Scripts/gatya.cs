@@ -23,6 +23,8 @@ public class gatya : MonoBehaviour
     };
     public float sum;
     public float RANDOM;
+
+    int i; //ガチャの返り値
     
 
     // Start is called before the first frame update
@@ -78,7 +80,7 @@ public class gatya : MonoBehaviour
                 {
                     return i;
 
-                 
+                    Debug.Log("test");
                 }
             }
             PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 200);
@@ -90,18 +92,27 @@ public class gatya : MonoBehaviour
     }
     public void GatyaButton()
     {
+        /*
         for (int i = 0; i < Picture.Length; i++)
         {
-            i = Oncegatya();
+           // i = Oncegatya();
+            Debug.Log("o");
         }
+        */
+        i = Oncegatya();
     }
 
     public void GazouHyouzi()
     {
-        for (int i = 0; i < Picture.Length; i++)
+        /*
+        for (int j = 0; j < Picture.Length; j++)
         {
-            Picture[i].SetActive(true);
+            Picture[j].SetActive(true);
+            Debug.Log("a");
         }
+        */
+        Picture[i].SetActive(true);
+
     }
 
         public void GatyaResult()

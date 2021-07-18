@@ -10,7 +10,17 @@ public class gatya : MonoBehaviour
     public GameObject GatyaShop;
     public GameObject[] Picture;
     public bool[] Result;
-    float[] Gatya = {0.2f,0.1f,0.1f,0.3f,0.2f,0.1f};
+    float[] Gatya = {0.01625f,0.01625f,0.01625f,0.01625f,0.01625f,0.01625f,0.01625f,0.01625f,
+        0.01625f,0.01625f,0.01625f,0.01625f,0.01625f,0.01625f,0.01625f,0.01625f,
+        0.01625f,0.01625f,0.01625f,0.01625f,0.01625f,0.01625f,0.01625f,0.01625f,
+        0.01625f,0.01625f,0.01625f,0.01625f,0.01625f,0.01625f,0.01625f,0.01625f,
+        0.01f,0.01f,0.01f,0.01f,0.01f,0.01f,
+        0.01f,0.01f,0.01f,0.01f,0.01f,0.01f,
+        0.01f,0.01f,0.01f,0.01f,0.01f,0.01f,
+        0.01f,0.01f,0.01f,0.01f,0.01f,0.01f,
+        0.01f,0.01f,0.01f,0.01f,0.01f,0.01f,
+        0.01f,0.01f,0.01f,0.01f,0.01f
+    };
     public float sum;
     public float RANDOM;
     
@@ -48,7 +58,7 @@ public class gatya : MonoBehaviour
         GatyaShop.SetActive(true);
         Menu.SetActive(false);
     }
-    public void Oncegatya()
+    public int Oncegatya()
     {
         if (PlayerPrefs.GetInt("SCORE") < 200)
         {
@@ -66,10 +76,9 @@ public class gatya : MonoBehaviour
                 sum += Gatya[i];
                 if(sum > RANDOM)
                 {
-                    //return i;
-                    Debug.Log("RANDOM"+RANDOM);
-                    Debug.Log("sum"+sum);
-                    break;
+                    return i;
+
+                 
                 }
             }
             PlayerPrefs.SetInt("SCORE", PlayerPrefs.GetInt("SCORE") - 200);
@@ -77,10 +86,25 @@ public class gatya : MonoBehaviour
             Invoke("GatyaResult", 0.2f);
             
         }
-        //return 0;
+        return 0;
     }
- 
-    public void GatyaResult()
+    public void GatyaButton()
+    {
+        for (int i = 0; i < Picture.Length; i++)
+        {
+            i = Oncegatya();
+        }
+    }
+
+    public void GazouHyouzi()
+    {
+        for (int i = 0; i < Picture.Length; i++)
+        {
+            Picture[i].SetActive(true);
+        }
+    }
+
+        public void GatyaResult()
     {
         
 
